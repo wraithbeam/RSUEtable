@@ -79,6 +79,8 @@ def add_new_chel(value):
     connection = sqlite3.connect("RsueGraduates")
     with connection:
         cursor = connection.cursor()
+        #str(id[0])[1:-2]
+
 
         column = ["name", "surname", "patronymic", "date_receipt", "date_graduation", "date_birthday", "diplom_number", "diplom_number2", "study_form", "adress", "faculty", "specialty", "level", "god_okonchaniya"]
         request  = "insert into Graduates ("
@@ -96,12 +98,10 @@ def add_new_chel(value):
             if value[i] != "":
                 request += "'" + value[i] + "', "
         request += f"'{fak}', '{spec}', '{level}', '{year}')"
-
-        print(request)
         cursor.execute(request)
 
-        request  = "insert into Contact_details (id_graduate, "
         id = cursor.execute("SELECT id_graduate FROM Graduates ORDER BY id_graduate DESC LIMIT 1").fetchall()
+        request  = "insert into Contact_details (id_graduate, "
         column_contact = ["email", "phone_number", "github", "inst", "telegram", "vk"]
         for i in range(10, 16):
             if value[i] != "":
@@ -118,7 +118,29 @@ def add_new_chel(value):
                 request += ") "
         cursor.execute(request)
 
-        print(request)
+        #Навыки
+        for i in range (len(value[17])):
+            if (str(cursor.execute(f"select name_tool from Tool where name_tool = '{value[17][i]}'").fetchall()) == "[]"):
+                cursor.execute(f"insert into Tool (name_tool) values ('{value[17][i]}')")
+            id_tool = cursor.execute(f"select id_tool from Tool where name_tool = '{value[17][i]}'").fetchall()
+            cursor.execute(f"insert into Tools (id_graduate, id_tool) values ('{str(id[0])[1:-2]}', '{str(id_tool[0])[1:-2]}')")
+
+        #Работа
+        for i in range(len(value[16])):
+            #Место работы
+            work = value[16][i].split(' ', 2)
+            if (str(cursor.execute(f"select work_name from Work_place where work_name = '{work[0]}'").fetchall()) == "[]"):
+                cursor.execute(f"insert into Work_place (work_name) values ('{work[0]}')")
+            id_work_place = cursor.execute(f"select id_work_place from Work_place where work_name = '{work[0]}'").fetchall()
+            #Должность
+            if (str(cursor.execute(f"select name_postition from Work_position where name_postition = '{work[1]}'").fetchall()) == "[]"):
+                cursor.execute(f"insert into Work_position (name_postition) values ('{work[1]}')")
+            id_work_pos = cursor.execute(f"select id_work_position from Work_position where name_postition = '{work[1]}'").fetchall()
+            #Карьера
+            cursor.execute(f"insert into Works (id_graduate, id_work_place, id_work_position) values ({str(id[0])[1:-2]}, '{str(id_work_place[0])[1:-2]}', '{str(id_work_pos[0])[1:-2]}')")
+
+
+
 
 @eel.expose
 def last_chel():
