@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="js/dropdown.js"></script>
+    <script type="text/javascript" src="js/main_table_fill.js"></script>
+    <script type="text/javascript" src="js/bottom_menu_click.js"></script>
+    <script type="text/javascript" src="js/new_chel_view.js"></script>
+    <script src="https://kit.fontawesome.com/6a040da529.js" crossorigin="anonymous"></script>
+    <title>РГЭУ(РИНХ)</title>
+</head>
+<body onload="onLoad()" >
+  <div id="main_body">
+  </div>
+  <div class="table_container">
+      <div class="tbl-header">
+          <table cellpadding="0" cellspacing="0" border="0" id="header_table">
+            <thead>
+              <tr id="head_tr">
+                <!--th-->
+              </tr>
+            </thead>
+          </table>
+        </div>
+        
+        <div class="tbl-content">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tbody id="content_table">
+              <!--tr / td-->
+            </tbody>
+          </table>
+        </div>
+        <div class="button_holder">
+          <button class="bot_but" onclick="on_back_button_click()">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <button class="bot_but" onclick="on_add_button_click()">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <button class="bot_but" onclick="on_dock_button_click()">
+            <i class="fa-regular fa-file-lines"></i>
+          </button>
+        </div>
+  </div>
+</body>
+</html>
+

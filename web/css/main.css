@@ -1,0 +1,342 @@
+
+h1{
+    font-size: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  table{
+    width:100%;
+    table-layout: fixed;
+    border-radius: 10px;
+  }
+  .tbl-header{
+    background-color: rgba(255,255,255,0.3);
+   }
+  .tbl-content{
+    height:80vh;
+    overflow-x:auto;
+    margin-top: 0px;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  th{
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  td{
+    padding: 15px;
+    text-align: left;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 18px;
+    color: #fff;
+    border-bottom: solid 1px rgba(255,255,255,0.1);
+  }
+  tr:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+  body{
+    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+    background: linear-gradient(to right, #25c481, #25b7c4);
+    font-family: 'Roboto', sans-serif;
+  }
+  section{
+    margin: 50px;
+  }
+  
+  
+  /* for custom scrollbar for webkit browser*/
+  
+  ::-webkit-scrollbar {
+      width: 6px;
+  } 
+  ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  } 
+  ::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  }
+
+
+  /*Кнопки Button*/
+
+.hbtn {
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
+    padding: 8px 20px;
+    margin: 0px 3px 6px;
+    text-align: center;
+    border: 2px solid rgb(255, 255, 255);
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    white-space: nowrap;
+    z-index: 0;
+} 
+
+
+.hbtn i {
+    padding-right: 8px;
+} 
+
+
+.hb-border-top-br4 {
+    position: relative;
+    transition-duration: 0.3s;
+    overflow: visible;
+    box-sizing: border-box;
+    border: none;
+    padding: 10px 22px;
+} 
+
+
+.hb-border-top-br4::after {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    border: 2px solid rgb(255, 255, 255);
+    z-index: 2;
+    margin: 0px;
+    top: 0px;
+    right: 0px;
+    border-bottom-width: 2px;
+    transition: border-bottom-width 0.1s ease 0.2s, height 0.2s ease 0.1s, width 0.2s ease 0s, margin 0.2s ease 0s, border-top-width 0.2s ease 0s;
+} 
+
+
+.hb-border-top-br4:hover::after {
+    width: 60%;
+    height: 0px;
+    border-width: 4px 2px 0px;
+    margin: 0px 20%;
+    transition: border-bottom-width 0.1s ease 0s, height 0.2s ease 0.1s, width 0.2s ease 0.2s, margin 0.2s ease 0.2s, border-top-width 0.2s ease 0.2s;
+} 
+
+/*Список dropdown datalist*/
+
+.chosen-value {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  height: 0.3rem;
+  width: 3.8rem;
+  font-size: 0.5rem;
+  padding: 1rem;
+  border: 3px solid transparent;
+  transition: .3s ease-in-out;
+}
+  
+  .chosen-value::-webkit-input-placeholder {
+    color: #333;
+  }
+  
+  .chosen-value:hover {
+    background-color: #FF908B;
+    cursor: pointer;
+  }
+    
+    .chosen-value::-webkit-input-placeholder {
+      color: #333;
+    }
+  
+    .chosen-value:focus,
+    .chosen-value.open {
+    box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.2);
+    outline: 0;
+    background-color: #FF908B;
+    color: #000;
+    }
+    
+    .chosen-value::-webkit-input-placeholder {
+      color: #000;
+    }
+
+.value-list {
+  list-style: none;
+  margin-top: 4rem;
+  box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.2);
+  overflow: hidden;
+  max-height: 0;
+  transition: .3s ease-in-out;
+}
+  
+  .value-list.open {
+   max-height: 320px;
+   overflow: auto;
+  }
+  
+  li {
+    position: relative;
+    height: 4rem;
+    background-color: #FAFCFD;
+    padding: 1rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color .3s;
+    opacity: 1;
+  }
+    li:hover {
+      background-color: #FF908B;
+    }
+    
+    li.closed {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0;
+      opacity: 0;
+    }
+
+    /* Выпадающий список сетей */
+i{
+  font-size: 20px;
+}    
+.wrapper{
+  background-color: rgba(255, 255, 255, 0.25);
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 6px;
+  display: grid;
+  text-align: center;
+  padding: 4px;
+  word-break: break-all;
+}
+.info_contact{
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 3px;
+  padding: 3px;
+}
+
+/*окошко доп инфы*/
+.dop_infa{
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: auto;
+  text-align: center;
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  position: absolute;
+  z-index: 1;
+  margin: 15% 25% 25% 50%;
+}
+.table_container{
+  position: absolute;
+  z-index: 0;
+}
+.block_list{
+  padding: 5px 15px;
+  width: 100%;
+  border-radius: 5px;
+}
+button{
+  background-color: #d3d3d3;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: fit-content;
+  border-radius: 5px;
+}
+button:active{
+  background-color: #b6b6b6
+}
+.bot_but{
+  color: white;
+  background: -webkit-linear-gradient(top, #25c481, #25b7c4);
+  border: 1px solid #ffffff70;
+}
+.bot_but:active{
+  background: -webkit-linear-gradient(top, #25c481, #1eccdb);
+  border: 1px solid #ffffff;
+}
+.add_form{
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: auto;
+  text-align: center;
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  position: absolute;
+  z-index: 1;
+  margin: 10% 25% 25% 28%;
+}
+.names, .input_work{
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 4px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+/*Картинки в input*/
+
+.inputWithIcon{
+  padding-left: 23px;
+  position: relative;
+  margin: 0 5px;
+}
+
+.inputWithIcon i {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  transition: 0.3s;
+  background-color: #aaa;
+  color: #fff;
+  padding: 9px 6px;
+  border-radius: 4px 0 0 4px;
+}
+
+.input_soc {
+  width: 100%;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  margin: 8px 3px;
+  outline: none;
+  padding: 9px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+.social_div, .names_div, .work_div, .skills_div{
+  display: flex;
+}
+.dop_div{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+.dop_div_row{
+  display: flex;
+}
+.but_ac{
+  margin-right: 80px;
+}
+.but_dec{
+  padding: 12px 18px;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/home.css">
+    <script type="text/javascript" src="/eel.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/choose.js"></script>
+    <title>РГЭУ(РИНХ)</title>
+</head>
+<body>
+    <div class="home">
+    <img src="img/logo.svg" class="logo">
+        <div class="form-container" id="form-container">
+            <div class="facultet">
+                <input type="text" placeholder="Выберите факультет:" list="faculties" id="fac_input" onchange="fill_spec()">
+                <datalist id="faculties" class="value-list">
+                    <option>КТиИБ</option>
+                    <option>МиП</option>
+                    <option>ТД</option>
+                    <option>УЭФ</option>
+                    <option>ЭиФ</option>
+                    <option>ЮрФак</option>
+                    <option>ЛиЖ</option>
+                </datalist>
+            </div>
+
+            <div class="level">
+                <input type="text" placeholder="Выберите уровень:" list="levels" id="lvl_input" onchange="fill_spec()">
+                <datalist id="levels" class="value-list">
+                    <option>Бакалавриат</option>
+                    <option>Магистратура</option>
+                    <option>Аспирантура</option>
+                </datalist>
+            </div>
+
+            <div class="specialty" id = "specialty">
+            </div>
+
+            <div id="year"> 
+            </div>
+
+            <div id="apply_holder">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
