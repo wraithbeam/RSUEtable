@@ -123,8 +123,23 @@ def add_new_chel(value):
             if (str(cursor.execute(f"select name_tool from Tool where name_tool = '{value[17][i]}'").fetchall()) == "[]"):
                 cursor.execute(f"insert into Tool (name_tool) values ('{value[17][i]}')")
             id_tool = cursor.execute(f"select id_tool from Tool where name_tool = '{value[17][i]}'").fetchall()
-            print(f"'{str(id[0])[1:-2]}', '{str(id_tool[0])[1:-2]}'")
             cursor.execute(f"insert into Tools (id_graduate, id_tool) values ('{str(id[0])[1:-2]}', '{str(id_tool[0])[1:-2]}')")
+
+        #Работа
+        for i in range(len(value[16])):
+            #Место работы
+            work = value[16][i].split(' ', 2)
+            if (str(cursor.execute(f"select work_name from Work_place where work_name = '{work[0]}'").fetchall()) == "[]"):
+                cursor.execute(f"insert into Work_place (work_name) values ('{work[0]}')")
+            id_work_place = cursor.execute(f"select id_work_place from Work_place where work_name = '{work[0]}'").fetchall()
+            #Должность
+            if (str(cursor.execute(f"select name_postition from Work_position where name_postition = '{work[1]}'").fetchall()) == "[]"):
+                cursor.execute(f"insert into Work_position (name_postition) values ('{work[1]}')")
+            id_work_pos = cursor.execute(f"select id_work_position from Work_position where name_postition = '{work[1]}'").fetchall()
+            #Карьера
+            cursor.execute(f"insert into Works (id_graduate, id_work_place, id_work_position) values ({str(id[0])[1:-2]}, '{str(id_work_place[0])[1:-2]}', '{str(id_work_pos[0])[1:-2]}')")
+
+
 
 
 @eel.expose
