@@ -79,6 +79,8 @@ def add_new_chel(value):
     connection = sqlite3.connect("RsueGraduates")
     with connection:
         cursor = connection.cursor()
+        #str(id[0])[1:-2]
+
 
         column = ["name", "surname", "patronymic", "date_receipt", "date_graduation", "date_birthday", "diplom_number", "diplom_number2", "study_form", "adress", "faculty", "specialty", "level", "god_okonchaniya"]
         request  = "insert into Graduates ("
@@ -96,12 +98,10 @@ def add_new_chel(value):
             if value[i] != "":
                 request += "'" + value[i] + "', "
         request += f"'{fak}', '{spec}', '{level}', '{year}')"
-
-        print(request)
         cursor.execute(request)
 
-        request  = "insert into Contact_details (id_graduate, "
         id = cursor.execute("SELECT id_graduate FROM Graduates ORDER BY id_graduate DESC LIMIT 1").fetchall()
+        request  = "insert into Contact_details (id_graduate, "
         column_contact = ["email", "phone_number", "github", "inst", "telegram", "vk"]
         for i in range(10, 16):
             if value[i] != "":
@@ -118,7 +118,14 @@ def add_new_chel(value):
                 request += ") "
         cursor.execute(request)
 
-        print(request)
+        #Навыки
+        for i in range (len(value[17])):
+            if (str(cursor.execute(f"select name_tool from Tool where name_tool = '{value[17][i]}'").fetchall()) == "[]"):
+                cursor.execute(f"insert into Tool (name_tool) values ('{value[17][i]}')")
+            id_tool = cursor.execute(f"select id_tool from Tool where name_tool = '{value[17][i]}'").fetchall()
+            print(f"'{str(id[0])[1:-2]}', '{str(id_tool[0])[1:-2]}'")
+            cursor.execute(f"insert into Tools (id_graduate, id_tool) values ('{str(id[0])[1:-2]}', '{str(id_tool[0])[1:-2]}')")
+
 
 @eel.expose
 def last_chel():

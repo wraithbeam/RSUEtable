@@ -3,6 +3,10 @@ function new_chel_view(value){
 
     let content_table = document.getElementById("content_table")
     let tr = document.createElement('tr')
+    eel.last_chel()()
+    .then(_id =>{
+        tr.id = "id_graduate " + _id;
+    })
     for(let i = 0; i < 5; i++){
         let td = document.createElement('td')
         td.innerHTML = value[i];
