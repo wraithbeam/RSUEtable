@@ -18,8 +18,10 @@ function onInfoClick(id){
         input.setAttribute("list", ("searchresults " + id));
         
 
-        let rows = eel.give_info_to_js(parseInt(id))()
+        eel.give_info_to_js(parseInt(id))()
         .then(rows => {
+            console.log(parseInt(id))
+            console.log(rows)
             if((parseInt(id) % 10 != 0) && (parseInt(id) % 10 != 3)){ //Если это не контакты или доп инфа
                 for(var i = 0; i < rows.length; i++){   //Цикл по количесвту принятых строк
                     var option_not_contact = document.createElement('option');  //Создаем строку в datalist
@@ -78,14 +80,12 @@ function onInfoClick(id){
                     dop_infa.classList.add('dop_infa');
                     dop_infa.id ="dop_infa";
 
-                    for(let k =0; k < rows[Math.round((parseInt(id) - 800000) / 10)].length; k++){
+                    for(let k =0; k < rows[0].length; k++){
 
-                        if(rows[Math.round((parseInt(id) - 800000) / 10)][k] != null){
-                            let dop_inf_div = document.createElement('div');
-                            dop_inf_div.classList.add('block_list');
-                            dop_inf_div.innerHTML = (args[k] + rows[Math.round((parseInt(id) - 800000) / 10)][k]);
-                            dop_infa.appendChild(dop_inf_div);
-                        }
+                        let dop_inf_div = document.createElement('div');
+                        dop_inf_div.classList.add('block_list');
+                        dop_inf_div.innerHTML = (args[k] + rows[0][k]);
+                        dop_infa.appendChild(dop_inf_div);
 
                     }
                     let button = document.createElement('button');

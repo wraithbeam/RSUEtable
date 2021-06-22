@@ -6,8 +6,9 @@ function onLoad(){
         if(rows != null){
             for (let j = 0; j < rows.length; j++) {
                     let tr = document.createElement('tr');
+                    tr.id = "id_graduate " + rows[j][5];
                     
-                    for (let i = 0; i < rows[j].length; i++) {
+                    for (let i = 0; i < rows[j].length - 1; i++) {
                         let td = document.createElement('td');
                         td.innerHTML = rows[j][i];
                         tr.appendChild(td);
@@ -17,7 +18,7 @@ function onLoad(){
                         let button = document.createElement('a');
                         button.classList.add('hbtn');
                         button.classList.add('hb-border-top-br4');
-                        td.id = (i + j * 10) + 800000;
+                        td.id = i + rows[j][5] * 10 + 800000;
                         button.onclick = function(e){
                             onInfoClick(td.id);
                         }

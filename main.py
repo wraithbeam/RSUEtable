@@ -13,14 +13,14 @@ def give_info_to_js(value):
         cursor.execute("select " +
         "Contact_details.email,Contact_details.phone_number, Contact_details.github, Contact_details.inst, Contact_details.telegram, Contact_details.vk " +
         "from Graduates join Contact_details on Contact_details.id_graduate = Graduates.id_graduate " +
-        "Where Graduates.id_graduate = " + str(((int(value) - 800000) // 10) + 1))
+        "Where Graduates.id_graduate = " + str(((int(value) - 800000) // 10)))
         rows = cursor.fetchall()
         return rows
     elif value % 10 == 1:
         cursor.execute("select " +
         "Work_place.work_name, Work_position.name_postition " +
         "from Graduates join Works on Works.id_graduate = Graduates.id_graduate join Work_place on Work_place.id_work_place = Works.id_work_place join Work_position on Work_position.id_work_position = Works.id_work_position " +
-        "Where Graduates.id_graduate = " + str(((int(value) - 800000) // 10) + 1) +
+        "Where Graduates.id_graduate = " + str(((int(value) - 800000) // 10)) +
         " ORDER by Work_place.id_work_place ")
         rows = cursor.fetchall()
         return rows
@@ -28,13 +28,16 @@ def give_info_to_js(value):
         cursor.execute("select " +
         "Tool.name_tool as Навык " +
         "from Graduates join Tools on Graduates.id_graduate = Tools.id_graduate join Tool on Tools.id_tool = Tool.id_tool " +
-        "Where Graduates.id_graduate = " + str(((int(value) - 800000) // 10) + 1) +
+        "Where Graduates.id_graduate = " + str(((int(value) - 800000) // 10)) +
         " ORDER by Tool.name_tool ")
         rows = cursor.fetchall()
         return rows
     elif value % 10 == 3:
-        cursor.execute("select date_birthday, adress, diplom_number, diplom_number2, study_form from Graduates")
+        print(str(((int(value) - 800000) // 10) + 1))
+        cursor.execute("select date_birthday, adress, diplom_number, diplom_number2, study_form from Graduates" +
+        f" WHERE id_graduate = {str(((int(value) - 800000) // 10))}")
         rows = cursor.fetchall()
+        print(rows)
         return rows
 
 @eel.expose
@@ -50,7 +53,7 @@ def fill_info_into_table():
     connection = sqlite3.connect("RsueGraduates")
     cursor = connection.cursor()
     
-    cursor.execute("select surname, name, patronymic, date_receipt, date_graduation from Graduates " +
+    cursor.execute("select surname, name, patronymic, date_receipt, date_graduation, id_graduate from Graduates " +
     f"Where faculty = '{fak}' and specialty = '{spec}' and level = '{level}' and god_okonchaniya = '{year}' " + 
     "ORDER BY surname")
     return cursor.fetchall()
